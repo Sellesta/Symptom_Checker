@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <title>Symptom Checker</title>
+    </head>
+    <body>
+        <h1>Sellesta's Symptom Checker</h1>
+        <p>
+            Select the symptoms you are experiencing and our magic algorithms will figure out what disease you have!
+        </p>
+
+        {% if diagnoses != none %}
+            <h2>Your Inputted Symptoms: </h2>
+            <ul>
+                {% for input in input_symptoms %}
+                    <li>{{input}}</li>
+                {% endfor %}
+            </ul>
+            {% if diagnoses == -1 %}
+                <h2>No Diagnoses Found, please try again</h2>
+            {% else %}
+                <h2>Your Diagnoses (Model Confidence = {{confidence}}%): </h2>
+                <ol>
+                    {% for diagnosis in diagnoses %}
+                        <li>
+                            <b>{{diagnosis.disease}} (Score = {{diagnosis.score}})</b>
+                            <br>
+                            <p>{{diagnosis.description}}</p>
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% endif %}
+            <br>
+        {% endif %}
+
+        <form name="form" method="POST">
+            <table>
+                <tr>
+                {% for symptom in all_symptoms %}
+                    <td>
+                        <input type="checkbox" id="{{symptom}}" name="{{symptom}}" value="1">
+                        <input type="hidden" id="{{symptom}}" name="{{symptom}}" value="0">
+                        <label for="{{symptom}}">{{symptom}}</label>
+                    </td>
+                    {% if loop.index % 6 == 0 %}
+                        </tr>
+                        <tr>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+            </table>
+            <div style="text-align:center">
+                <button>Submit</button>
+            </div>
+        </form>
+    </body>
+</html>
