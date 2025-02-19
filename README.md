@@ -2,6 +2,8 @@
 
 Healthcare accessibility remains a challenge for many people due to cost, availability, and long wait times for medical consultations. Many individuals turn to the internet for self-diagnosis, which can often lead to misinformation and anxiety. We wanted to create an AI-driven solution that provides reliable preliminary assessments based on symptoms while encouraging users to seek professional medical advice when needed.
 
+Try it Out: https://github.com/Sellesta/Symptom_Checker/tree/main
+
 ## What it does
 
 Our AI-based Symptom Checker allows users to input their symptoms through text or voice commands. The system then leverages machine learning models trained on medical datasets to analyze the symptoms and provide potential conditions, severity assessments, and recommendations. Additionally, the app can integrate with APIs like BetterDoctor to help users find nearby healthcare providers for further consultation.
